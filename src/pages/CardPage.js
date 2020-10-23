@@ -21,6 +21,7 @@ import {
 
 import ChartComponent from 'react-chartjs-2';
 
+import UserPropType from 'proptypes/UserPropType';
 import CardImage from 'components/CardImage';
 import CardGrid from 'components/CardGrid';
 import ImageFallback from 'components/ImageFallback';
@@ -775,11 +776,7 @@ CardPage.propTypes = {
     }).isRequired,
   ).isRequired,
   cubes: PropTypes.arrayOf(PropTypes.shape([])),
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

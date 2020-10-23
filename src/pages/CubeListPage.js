@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import LocalStorage from 'utils/LocalStorage';
 import Query from 'utils/Query';
 
+import UserPropType from 'proptypes/UserPropType';
 import CardModalForm from 'components/CardModalForm';
 import { ChangelistContextProvider } from 'components/ChangelistContext';
 import ClientOnly from 'components/ClientOnly';
@@ -179,11 +180,7 @@ CubeListPage.propTypes = {
   defaultView: PropTypes.string.isRequired,
   defaultPrimarySort: PropTypes.string.isRequired,
   defaultSecondarySort: PropTypes.string.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

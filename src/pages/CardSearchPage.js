@@ -15,6 +15,7 @@ import {
   CustomInput,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import Query from 'utils/Query';
 import Paginate from 'components/Paginate';
 import DynamicFlash from 'components/DynamicFlash';
@@ -193,11 +194,7 @@ const CardSearchPage = ({ user, loginCallback }) => {
 };
 
 CardSearchPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

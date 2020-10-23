@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardHeader, CardBody } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import ButtonLink from 'components/ButtonLink';
 import MainLayout from 'layouts/MainLayout';
@@ -48,11 +49,7 @@ const AdminDashboardPage = ({
 );
 
 AdminDashboardPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   commentReportCount: PropTypes.number.isRequired,
   applicationCount: PropTypes.number.isRequired,

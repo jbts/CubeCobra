@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { CardHeader, Card } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import Podcast from 'components/Podcast';
 import ButtonLink from 'components/ButtonLink';
@@ -38,11 +39,7 @@ const PodcastPage = ({ user, loginCallback, podcast, episodes }) => {
 };
 
 PodcastPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   podcast: PropTypes.shape({
     title: PropTypes.string.isRequired,

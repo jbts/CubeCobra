@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Row, Col } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import ArticlePreview from 'components/ArticlePreview';
 import Paginate from 'components/Paginate';
@@ -35,11 +36,7 @@ const ArticlesPage = ({ user, loginCallback, articles, count, page }) => (
 );
 
 ArticlesPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   articles: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   count: PropTypes.number.isRequired,

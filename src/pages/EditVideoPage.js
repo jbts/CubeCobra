@@ -16,6 +16,7 @@ import {
   Button,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import VideoPreview from 'components/VideoPreview';
 import Tab from 'components/Tab';
@@ -264,11 +265,7 @@ const EditVideoPage = ({ user, loginCallback, video }) => {
 };
 
 EditVideoPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   video: PropTypes.shape({
     body: PropTypes.string,

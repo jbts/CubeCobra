@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UserPropType from 'proptypes/UserPropType';
 import BlogPost from 'components/BlogPost';
 import CubePreview from 'components/CubePreview';
 import ArticlePreview from 'components/ArticlePreview';
@@ -118,11 +119,7 @@ DashboardPage.propTypes = {
     }),
   ).isRequired,
   decks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   content: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   loginCallback: PropTypes.string,
 };

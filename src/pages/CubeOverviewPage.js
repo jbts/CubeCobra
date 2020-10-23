@@ -18,6 +18,7 @@ import {
   UncontrolledCollapse,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import { csrfFetch } from 'utils/CSRF';
 import { getCubeId, getCubeDescription } from 'utils/Util';
 
@@ -359,11 +360,7 @@ CubeOverview.propTypes = {
       _id: PropTypes.string.isRequired,
     }),
   ),
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

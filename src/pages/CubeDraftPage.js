@@ -16,6 +16,7 @@ import {
   Spinner,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import Draft, { init, createSeen, addSeen, getPicked, getSeen } from 'utils/Draft';
 import Location from 'utils/DraftLocation';
 import { cmcColumn } from 'utils/Util';
@@ -273,11 +274,7 @@ CubeDraftPage.propTypes = {
     bots: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
     ratings: PropTypes.objectOf(PropTypes.number),
   }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

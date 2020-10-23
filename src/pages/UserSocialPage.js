@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CubePreview from 'components/CubePreview';
 import UserPreview from 'components/UserPreview';
 import Advertisement from 'components/Advertisement';
@@ -93,11 +94,7 @@ UserSocialPage.propTypes = {
       _id: PropTypes.string.isRequired,
     }),
   ).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

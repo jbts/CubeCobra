@@ -6,6 +6,7 @@ import { sortDeck } from 'utils/Util';
 
 import { Card, CardHeader, CardBody, Row, Col, CardTitle } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DeckbuilderNavbar from 'components/DeckbuilderNavbar';
 import DeckStacks from 'components/DeckStacks';
 import { DisplayContextProvider } from 'components/DisplayContext';
@@ -199,11 +200,7 @@ CubeDeckbuilderPage.propTypes = {
     synergies: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
   }).isRequired,
 
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

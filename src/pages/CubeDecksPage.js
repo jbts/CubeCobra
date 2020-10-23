@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardBody, CardHeader } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DeckPreview from 'components/DeckPreview';
 import Paginate from 'components/Paginate';
 import CubeLayout from 'layouts/CubeLayout';
@@ -48,11 +49,7 @@ CubeDecksPage.propTypes = {
   ).isRequired,
   pages: PropTypes.number.isRequired,
   activePage: PropTypes.number.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

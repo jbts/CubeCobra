@@ -19,6 +19,7 @@ import {
   Spinner,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CSRFForm from 'components/CSRFForm';
 import CustomImageToggler from 'components/CustomImageToggler';
 import { DisplayContextProvider } from 'components/DisplayContext';
@@ -229,11 +230,7 @@ CubeDeckPage.propTypes = {
     cube: PropTypes.string.isRequired,
   }).isRequired,
   draft: PropTypes.shape({ _id: PropTypes.string.isRequired }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

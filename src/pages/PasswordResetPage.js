@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardBody, FormGroup, Label, Input, Button, Col, Row, CardHeader } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CSRFForm from 'components/CSRFForm';
 import Advertisement from 'components/Advertisement';
 import DynamicFlash from 'components/DynamicFlash';
@@ -69,11 +70,7 @@ const LostPassword = ({ user, loginCallback }) => (
 );
 
 LostPassword.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

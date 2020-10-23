@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Button, Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CubePreview from 'components/CubePreview';
 import UserLayout from 'layouts/UserLayout';
 import DynamicFlash from 'components/DynamicFlash';
@@ -66,11 +67,7 @@ UserCubePage.propTypes = {
     artist: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
   }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   followers: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   following: PropTypes.bool.isRequired,
   cubes: PropTypes.arrayOf(

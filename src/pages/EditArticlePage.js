@@ -16,6 +16,7 @@ import {
   Button,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import ArticlePreview from 'components/ArticlePreview';
 import Tab from 'components/Tab';
@@ -251,11 +252,7 @@ const EditArticlePage = ({ user, loginCallback, article }) => {
 };
 
 EditArticlePage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   article: PropTypes.shape({
     body: PropTypes.string,

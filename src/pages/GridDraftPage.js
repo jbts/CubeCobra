@@ -19,6 +19,7 @@ import {
 import Location from 'utils/DraftLocation';
 import { cardType, cardIsSpecialZoneType } from 'utils/Card';
 
+import UserPropType from 'proptypes/UserPropType';
 import CustomImageToggler from 'components/CustomImageToggler';
 import DeckStacks from 'components/DeckStacks';
 import { DisplayContextProvider } from 'components/DisplayContext';
@@ -417,11 +418,7 @@ GridDraftPage.propTypes = {
     cube: PropTypes.string.isRequired,
     draftType: PropTypes.string.isRequired,
   }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

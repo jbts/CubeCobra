@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import UserPropType from 'proptypes/UserPropType';
 import { Col, Row } from 'reactstrap';
 import CubesCard from 'components/CubesCard';
 import CubeSearchNavBar from 'components/CubeSearchNavBar';
@@ -51,11 +52,7 @@ ExplorePage.propTypes = {
   featured: cubesListProp.isRequired,
   drafted: cubesListProp.isRequired,
   recentlyDrafted: cubesListProp.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

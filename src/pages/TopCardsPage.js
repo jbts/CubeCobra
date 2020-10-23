@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import FilterCollapse from 'components/FilterCollapse';
 import TopCardsTable from 'components/TopCardsTable';
@@ -52,11 +53,7 @@ const TopCardsPage = ({ user, data, numResults, loginCallback }) => {
 TopCardsPage.propTypes = {
   data: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.any)).isRequired,
   numResults: PropTypes.number.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

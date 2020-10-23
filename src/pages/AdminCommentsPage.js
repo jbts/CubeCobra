@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardHeader } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import Paginate from 'components/Paginate';
 import MainLayout from 'layouts/MainLayout';
@@ -40,11 +41,7 @@ const AdminCommentsPage = ({ user, loginCallback, comments, count, page }) => (
 );
 
 AdminCommentsPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   comments: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   count: PropTypes.number.isRequired,

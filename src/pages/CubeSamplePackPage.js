@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Row, Col } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CardGrid from 'components/CardGrid';
 import CardImage from 'components/CardImage';
 import CubeLayout from 'layouts/CubeLayout';
@@ -59,11 +60,7 @@ SamplePackPage.propTypes = {
     _id: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
   }).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 SamplePackPage.defaultProps = {

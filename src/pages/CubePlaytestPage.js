@@ -25,6 +25,7 @@ import {
   UncontrolledCollapse,
 } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CSRFForm from 'components/CSRFForm';
 import CubeContext from 'components/CubeContext';
 import CustomDraftFormatModal from 'components/CustomDraftFormatModal';
@@ -586,11 +587,7 @@ CubePlaytestPage.propTypes = {
       markdown: PropTypes.string,
     }),
   ).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

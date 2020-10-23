@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { CardHeader, Card } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import Video from 'components/Video';
 import ButtonLink from 'components/ButtonLink';
@@ -31,11 +32,7 @@ const VideoPage = ({ user, loginCallback, video }) => {
 };
 
 VideoPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   video: PropTypes.shape({
     title: PropTypes.string.isRequired,

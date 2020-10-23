@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardHeader, CardBody } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import MainLayout from 'layouts/MainLayout';
 import RenderToRoot from 'utils/RenderToRoot';
 
@@ -35,11 +36,7 @@ const VersionPage = ({ user, version, host, loginCallback }) => {
 VersionPage.propTypes = {
   version: PropTypes.string.isRequired,
   host: PropTypes.string.isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardHeader, CardBody, Row, Col } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import Paginate from 'components/Paginate';
 import ButtonLink from 'components/ButtonLink';
@@ -74,11 +75,7 @@ const AdminDashboardPage = ({ user, loginCallback, applications, count, page }) 
 );
 
 AdminDashboardPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   applications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   count: PropTypes.number.isRequired,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Card, CardHeader, Row, Col, CardBody } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import CubeSearchNavBar from 'components/CubeSearchNavBar';
 import CubePreview from 'components/CubePreview';
 import Paginate from 'components/Paginate';
@@ -76,11 +77,7 @@ SearchPage.propTypes = {
   perPage: PropTypes.number,
   page: PropTypes.number,
   order: PropTypes.string,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Nav, CardBody, Card, TabContent, TabPane, Input, FormGroup, Row, Col, Label, Button } from 'reactstrap';
 
+import UserPropType from 'proptypes/UserPropType';
 import DynamicFlash from 'components/DynamicFlash';
 import PodcastPreview from 'components/PodcastPreview';
 import Tab from 'components/Tab';
@@ -103,11 +104,7 @@ const EditPodcastPage = ({ user, loginCallback, podcast }) => {
 };
 
 EditPodcastPage.propTypes = {
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
   podcast: PropTypes.shape({
     title: PropTypes.string,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Query from 'utils/Query';
 
+import UserPropType from 'proptypes/UserPropType';
 import CardModalForm from 'components/CardModalForm';
 import CompareView from 'components/CompareView';
 import CubeCompareNavbar from 'components/CubeCompareNavbar';
@@ -96,11 +97,7 @@ CubeComparePage.propTypes = {
   ).isRequired,
   defaultShowTagColors: PropTypes.bool.isRequired,
   defaultSorts: PropTypes.arrayOf(PropTypes.string).isRequired,
-  user: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    notifications: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  }),
+  user: UserPropType,
   loginCallback: PropTypes.string,
 };
 
