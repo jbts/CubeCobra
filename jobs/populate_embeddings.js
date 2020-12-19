@@ -6,22 +6,21 @@ require('dotenv').config();
 
 const mongoose = require('mongoose');
 
+const fetch = require('node-fetch');
 const carddb = require('../serverjs/cards.js');
 const CardRating = require('../models/cardrating');
-const fetch = require('node-fetch');
 
 const BATCH_SIZE = 1000;
 
 const updateEmbeddings = async (names, embeddings) => {
-  const ratings = await CardRating.find({name:{$in:names}});
+  const ratings = await CardRating.find({ name: { $in: names } });
 
-
-  ratings.forEach((rating, index) => {
+  for (const rating of ratings) {
     rating.embedding = embeddings[names.indexOf(rating.name)];
-  });
+  }
 
   await Promise.all(ratings.map((rating) => rating.save()));
-}
+};
 
 (async () => {
   await carddb.initializeCardDb();
@@ -41,7 +40,11 @@ const updateEmbeddings = async (names, embeddings) => {
         if (response.ok) {
           // eslint-disable-next-line no-await-in-loop
           const synergies = await response.json();
-          await updateEmbeddings(ratings.slice(i, i + BATCH_SIZE).map((card) => card.name), synergies);
+          // eslint-disable-next-line no-await-in-loop
+          await updateEmbeddings(
+            ratings.slice(i, i + BATCH_SIZE).map((card) => card.name),
+            synergies,
+          );
           console.log(`Finished ${Math.min(ratings.length, i + BATCH_SIZE)} of ${ratings.length} embeddings.`);
         } else {
           console.log(`Could not get embeddings batch ${i / BATCH_SIZE}`);

@@ -8,9 +8,7 @@ const handleResponse = (res) => {
   console.log(`   ${res.status}`);
 };
 
-const badRoute = '/cube/overview/communitycube';
-
-//const prefix = 'http://localhost:5000';
+// const prefix = 'http://localhost:5000';
 const prefix = 'https://cubecobra.com';
 
 (async () => {
@@ -19,12 +17,12 @@ const prefix = 'https://cubecobra.com';
     for (const route of routes) {
       console.log(`   Fetching ${route}`);
 
-      console.time("    time");
+      console.time('    time');
+      // eslint-disable-next-line no-await-in-loop
       const res = await fetch(`${prefix}${route}`);
-      console.timeEnd("    time");
+      console.timeEnd('    time');
 
       handleResponse(res);
     }
   }
-  handleResponse(res);
 })();

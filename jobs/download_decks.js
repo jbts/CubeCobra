@@ -3,23 +3,18 @@
 
 // Load Environment Variables
 require('dotenv').config();
-const fs = require('fs');
-
-const path = (batch) => `jobs/export/decks/${batch}.json`;
 
 const mongoose = require('mongoose');
-
+const AWS = require('aws-sdk');
 const Deck = require('../models/deck');
 const carddb = require('../serverjs/cards.js');
-const AWS = require('aws-sdk');
+
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-
 const batchSize = 1000;
-
 const folder = 'august2';
 
 const processDeck = (deck) => {
@@ -54,28 +49,27 @@ const processDeck = (deck) => {
     console.log('Started');
     const count = await Deck.countDocuments();
     console.log(`Counted ${count} documents`);
-    const cursor = Deck.find()
-      .lean()
-      .cursor();
+    const cursor = Deck.find().lean().cursor();
 
     for (let i = 0; i < count; i += batchSize) {
       const decks = [];
       for (let j = 0; j < batchSize; j++) {
         if (i + j < count) {
+          // eslint-disable-next-line no-await-in-loop
           const deck = await cursor.next();
           if (deck) {
             decks.push(processDeck(deck));
           }
         }
       }
-     const params = {
-         Bucket: 'cubecobra', // pass your bucket name
-         Key: `${folder}/decks/${i / batchSize}.json`, // file will be saved as testBucket/contacts.csv
-         Body: JSON.stringify(decks)
-     };
-     await s3.upload(params).promise();
-    console.log(`Finished: ${Math.min(count, i + batchSize)} of ${count} decks`);
-
+      const params = {
+        Bucket: 'cubecobra', // pass your bucket name
+        Key: `${folder}/decks/${i / batchSize}.json`, // file will be saved as testBucket/contacts.csv
+        Body: JSON.stringify(decks),
+      };
+      // eslint-disable-next-line no-await-in-loop
+      await s3.upload(params).promise();
+      console.log(`Finished: ${Math.min(count, i + batchSize)} of ${count} decks`);
     }
     mongoose.disconnect();
     console.log('done');
